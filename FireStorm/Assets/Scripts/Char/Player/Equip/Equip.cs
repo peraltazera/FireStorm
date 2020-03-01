@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Equip : MonoBehaviour
 {
-    public string _name;
+    [Header("Equip")]
+    public string name;
 
     public virtual void Action(Animator anim)
     { 
-        print("Action"); 
+        print("Action" + name); 
     } 
 }

@@ -2,29 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider))]
 public class Char : MonoBehaviour
 {
-    public Rigidbody _rigid;
-    public Animator _anim;
-    public BoxCollider _boxCollider;
-    public string _name;
-    public float _life;
-    public float _speed;
+    [Header("Components")]
+    [Header("Char")]
+    public Animator anim;
+    public BoxCollider boxCollider;
+    [Header("Stats")]
+    public string name;
+    public float life;
+    public float speed;
 
-    void Start()
+    public virtual void Start()
     {
-        _rigid = GetComponent<Rigidbody>();
-        _anim = GetComponent<Animator>();
-        _boxCollider = GetComponent<BoxCollider>();
+        anim = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     public virtual void Mov()
     { 
-        print("Mov"); 
+        print("Mov" + name + ": " + speed); 
     } 
 
-    public void Damage()
+    public void Damage(int _damage)
     { 
-        print("Damage"); 
+        life -= _damage;
+        print("Damage" + name + ": " + _damage);
     } 
 }

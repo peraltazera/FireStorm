@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Axe : Weapon
 {
+    //[Header("Axe")]
+
     public override void Action(Animator anim)
     {
-        print("ActionAxe");
+        base.Action(anim);
     }
 }

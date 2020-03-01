@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
-    void Update()
+    //[Header("Slime")]
+
+    public override void Update()
     {
-        Mov();
-        Attack();
-        Damage();
+        base.Update();
+        // Mov();
+        // Attack();
+        // Damage();
+        // Perception();
     }
 
     public override void Mov()
-    {
-        print("MovSlime");
+    { 
+        base.Mov(); 
     }
 
     public override void Attack()
-    {
-        print("AttackSlime");
+    { 
+        base.Attack(); 
+    }
+
+    public override void Perception(bool _perception)
+    { 
+        base.Perception(_perception); 
     }
 }

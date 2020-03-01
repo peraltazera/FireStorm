@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Shield : Equip
 {
+    //[Header("Shield")]
+
     public override void Action(Animator anim)
     {
-        print("ActionAxe");
+        base.Action(anim);
     }
 }
