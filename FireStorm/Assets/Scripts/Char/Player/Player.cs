@@ -16,11 +16,13 @@ public class Player : Char
     { 
         base.Start();
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
     } 
 
     void Update()
     {
-        //Mov();
+        Mov();
         //Damage();
         //_equip[_equipIndex].Action(_anim);
     }

@@ -17,6 +17,11 @@ public class Enemy : Char
     public float damage;
     public bool perception;
 
+    public bool teste;
+    
+    public Transform player;
+    public Vector3 oldPosition;
+
     public override void Start()
     { 
         base.Start();
@@ -25,6 +30,7 @@ public class Enemy : Char
         agent.stoppingDistance = distAttack;
         fieldOsView = GetComponent<FieldOfView>();
         fieldOsView.enemy = GetComponent<Enemy>();
+        oldPosition = transform.position;
     } 
 
     public virtual void Update()
@@ -40,9 +46,39 @@ public class Enemy : Char
     public virtual void Perception(bool _perception)
     {
         if(_perception)
+        {
             agent.SetDestination(fieldOsView.visibleTargets[0].position);
+            float dist = Vector3.Distance(fieldOsView.visibleTargets[0].position, transform.position);
+            if(dist <= distAttack)
+            {
+                if(oldPosition == transform.position)
+                {
+                    anim.SetBool("stay", false);
+                    anim.SetBool("walk", false);
+                    anim.SetBool("attack", true);
+                }
+                else
+                {
+                    anim.SetBool("stay", false);
+                    anim.SetBool("walk", true);
+                    anim.SetBool("attack", false);
+                }
+            }
+            else
+            {
+                anim.SetBool("stay", false);
+                anim.SetBool("walk", true);
+                anim.SetBool("attack", false);
+            }
+        }
         else
+        {
             agent.SetDestination(this.gameObject.transform.position);
+            anim.SetBool("walk", false);
+            anim.SetBool("stay", true);
+            anim.SetBool("attack", false);
+        }
+        oldPosition = transform.position;
         print("Perception"  + name + ": " + _perception); 
     }
 }

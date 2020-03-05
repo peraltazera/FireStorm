@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(BoxCollider))]
 public class Char : MonoBehaviour
 {
     [Header("Components")]
@@ -17,8 +15,7 @@ public class Char : MonoBehaviour
 
     public virtual void Start()
     {
-        anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider>();
+        
     }
 
     public virtual void Mov()

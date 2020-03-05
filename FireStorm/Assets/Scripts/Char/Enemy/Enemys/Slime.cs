@@ -15,6 +15,13 @@ public class Slime : Enemy
         // Perception();
     }
 
+    public override void Start()
+    { 
+        base.Start();
+        anim = GetComponentInChildren<Animator>();
+        boxCollider = GetComponentInChildren<BoxCollider>();
+    } 
+
     public override void Mov()
     { 
         base.Mov(); 
